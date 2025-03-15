@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Poppins', serif;
+}
+
+@layer components {
+    .underline-animation {
+        @apply relative;
+    }
+
+    .underline-animation::after {
+        @apply absolute content-[''] w-full h-[3px] left-0 bottom-[-4px] bg-green-200 scale-x-0 
+        hover:scale-x-100 origin-bottom-right hover:origin-bottom-left transition-transform duration-300;
+    }
+
+    .slideshow-button {
+        @apply absolute top-[40%] p-3 bg-white xl:text-2xl lg:text-2xl md:text-xl sm:text-lg 
+        rounded-full cursor-pointer hover:bg-gray-500 hover:text-white transition-all duration-300;
+    }
+
+    .table-header {
+        @apply xl:text-2xl lg:text-xl md:text-lg text-lg p-3;
+    }
+
+    .table-data {
+        @apply xl:text-2xl lg:text-xl md:text-lg text-lg p-3 text-right;
+    }
+
+    .about-description {
+        @apply xl:text-xl lg:text-xl md:text-lg sm:text-lg text-justify mx-5 mt-6 w-[60%];
+    }
+
+    .about-logo-text {
+        @apply xl:text-4xl lg:text-xl md:text-lg text-lg font-bold m-1;
+    }
+} 

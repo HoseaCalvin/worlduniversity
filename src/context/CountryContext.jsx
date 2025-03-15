@@ -1,0 +1,38 @@
+import { createContext, useState, useEffect } from 'react';
+import axios from 'axios';
+
+// Create the context
+export const CountryContext = createContext();
+
+// Provider Component
+function CountryProvider ({ children }) {
+    const [countries, setCountries] = useState([]);
+    const [latestCountry, setLatestCountry] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchCountries = async () => {
+            try {
+                const response = await axios.get("https://restcountries.com/v3.1/all");
+                setCountries(response.data);
+            } catch (error) {
+                console.error("Error fetching countries", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchCountries();
+    }, []);
+
+    const updateLatestCountry = (country) => {
+        setLatestCountry(country);
+    };
+
+    return (
+        <CountryContext.Provider value={{ countries, latestCountry, updateLatestCountry, loading }}>
+            {children}
+        </CountryContext.Provider>
+    );
+};
+
+export default CountryProvider
