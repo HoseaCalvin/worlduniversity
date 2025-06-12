@@ -50,7 +50,7 @@ function CountryDetail() {
             <CountryDetailSkeleton/>
         )
     }
-    if (!country) return <p>Country not found.</p>;
+    if (!country) return <p className="flex justify-center items-center h-[100vh] text-4xl font-bold">Country not found.</p>;
 
     const { flags, name: countryName, capital, population, area, currencies, languages, independent } = country
 

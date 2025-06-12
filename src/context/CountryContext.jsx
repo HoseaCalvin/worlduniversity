@@ -13,7 +13,7 @@ function CountryProvider ({ children }) {
     useEffect(() => {
         const fetchCountries = async () => {
             try {
-                const response = await axios.get("https://restcountries.com/v3.1/all");
+                const response = await axios.get("https://restcountries.com/v3.1/all?fields=name,capital,languages,flags,currencies,population,area,independent");
                 setCountries(response.data);
             } catch (error) {
                 console.error("Error fetching countries", error);

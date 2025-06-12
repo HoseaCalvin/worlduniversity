@@ -40,21 +40,27 @@ function CountrySearch() {
                     <input type="text" value={searchResult} onChange={handleResult} className='w-[40%] h-[10%] p-2 rounded-lg' placeholder='Search'/>
                 </div>
             </div>
-            <div className='grid lg:grid-cols-3 gap-10 m-6 p-3 sm:grid-cols-2'>
-                {filteredCountries.map((country) => (
-                        <CountryCard 
-                            key={country.cca3}
-                            name={country.name.common}
-                            flag={country.flags.svg}
-                            description={country.name.common}
-                            region={country.region}
-                            capital={country.capital}
-                            population={country.population}   
-                        />
-                    )
-                    )
+                {filteredCountries.length > 0 ? (
+                    <div className="grid lg:grid-cols-3 gap-10 m-6 p-3 sm:grid-cols-2">
+                        {filteredCountries.map((country) => (
+                            <CountryCard
+                                key={country.cca3}
+                                name={country.name.common}
+                                flag={country.flags.svg}
+                                region={country.region}
+                                capital={country.capital}
+                                population={country.population}
+                                description={country.name.common}
+                            />
+                        ))} 
+                     </div> 
+                    ) : (
+                            <div className="flex flex-col justify-center items-center h-screen w-full">
+                                <img src="/src/assets/no-data.png" alt="No Countries" className="h-36 w-auto m-5"/>
+                                <p className="text-3xl font-bold">No Countries Found!</p>
+                            </div>
+                        )
                 }
-            </div>
             <Footer/>
         </>
     )
