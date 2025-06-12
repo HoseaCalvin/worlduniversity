@@ -1,7 +1,9 @@
 import CountryCard from '../components/CountryCard.jsx'
 import CountryCardSkeleton from '../components/CountryCardSkeleton.jsx'
 import Footer from '../components/Footer.jsx'
+
 import { useState, useContext } from 'react'
+
 import { CountryContext } from '../context/CountryContext.jsx'
 
 function CountrySearch() {

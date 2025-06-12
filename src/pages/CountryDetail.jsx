@@ -1,7 +1,9 @@
 import CountryDetailSkeleton from '../components/CountryDetailSkeleton'
 import Footer from '../components/Footer'
+
 import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
+
 import { CountryContext } from '../context/CountryContext'
 
 function CountryDetail() {

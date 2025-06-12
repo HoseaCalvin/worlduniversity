@@ -1,7 +1,9 @@
 import CountryCard from "../components/CountryCard"
 import CountryCardSkeleton from "../components/CountryCardSkeleton"
 import Footer from "../components/Footer"
+
 import { useState, useContext } from 'react'
+
 import { CountryContext } from "../context/CountryContext"
 
 function CountryFilter() {

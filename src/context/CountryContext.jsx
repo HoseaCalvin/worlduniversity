@@ -1,10 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Create the context
 export const CountryContext = createContext();
 
-// Provider Component
 function CountryProvider ({ children }) {
     const [countries, setCountries] = useState([]);
     const [latestCountry, setLatestCountry] = useState(null);
