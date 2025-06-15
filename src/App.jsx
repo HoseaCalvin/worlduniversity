@@ -1,4 +1,4 @@
-import Header from './components/Header.jsx'
+import Navbar from './components/Navbar.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import CountrySearch from './pages/CountrySearch.jsx'
@@ -12,7 +12,7 @@ function App() {
   return (
     <CountryProvider>
       <BrowserRouter>
-          <Header/>
+          <Navbar/>
           <Routes>
             <Route path='/' element={<Home/>}></Route>
             <Route path='/search' element={<CountrySearch/>}></Route>

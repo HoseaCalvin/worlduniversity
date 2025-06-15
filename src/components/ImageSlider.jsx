@@ -1,38 +1,45 @@
-import React, { useState } from 'react'
+import Waterfall from '../assets/slideshow/iceland-waterfall.jpg'
+import TowerBridge from '../assets/slideshow/england-towerbridge.jpg'
+import Temple from '../assets/slideshow/indonesia-temple.jpg'
+import Amsterdam from '../assets/slideshow/netherlands-amsterdam.jpg'
+import Colosseum from '../assets/slideshow/italy-colosseum.jpg'
+import LosAngeles from '../assets/slideshow/us-losangeles.jpg'
+
+import { useState } from 'react'
 
 const slideImages = [
     {
-        url: 'src/assets/slideshow/iceland-waterfall.jpg',
+        url: Waterfall,
         title: 'Magma and Frostbite',
         country: 'Iceland',
         description: 'Wander through the snow-blanketed plains or visit the grand volcanoes.'
     },
     {
-        url: 'src/assets/slideshow/england-towerbridge.jpg',
+        url: TowerBridge,
         title: 'Home of the Victors',
         country: 'United Kingdom',
         description: 'Indulge yourself by exploring the aesthetic English architecture.'
     },
     {
-        url: 'src/assets/slideshow/indonesia-temple.jpg',
+        url: Temple,
         title: 'Paradise Awaits',
         country: 'Indonesia',
         description: 'Witness the resplendent tropical views the nature has in store.'
     },
     {
-        url: 'src/assets/slideshow/netherlands-amsterdam.jpg',
+        url: Amsterdam,
         title: 'Wonders Below The Sea',
         country: 'Netherlands',
         description: 'Cycle through the cities or row a boat through the canals.'
     },
     {
-        url: 'src/assets/slideshow/italy-colosseum.jpg',
+        url: Colosseum,
         title: 'Heritage of the Romans',
         country: 'Italy',
         description: 'Just ensure that you do everything like the Romans did.'
     },
     {
-        url: 'src/assets/slideshow/us-losangeles.jpg',
+        url: LosAngeles,
         title: 'Land of the Opportunities',
         country: 'United States',
         description: 'Live your life with your \'American Dream\'.'

@@ -73,46 +73,45 @@ function CountryDetail() {
                         referrerPolicy='no-referrer-when-downgrade'
                         className="w-full h-[30vh] sm:h-[40vh] lg:h-[60vh] mt-3 mb-10 rounded-lg"
                     ></iframe>
-                    <table className='text-left w-[100%] border-4 mt-5 border-neutral-400'>
-                        <tbody>
-                            <tr className='border-2 border-neutral-400'>
-                                <th className='table-header'>Capital City</th>
-                                <td className='table-data'>{capital?.[0] || 'N/A'}</td>
-                            </tr>
-                            <tr className='border-2 border-neutral-400'>
-                                <th className='table-header'>Official Languages</th>
-                                <td className='table-data'>
-                                    <ul>
-                                        {Object.values(languages || {}).map((language, index) => (
-                                            <li key={index}>{language}</li>
-                                        ))}
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr className='border-2 border-neutral-400'>
-                                <th className='table-header'>Currency</th>
-                                <td className='table-data'> 
-                                    <ul>
-                                        {Object.values(currencies || {}).map((currency, index) => (
-                                            <li key={index}>{currency.name} ({currency.symbol})</li>
-                                        ))}
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr className='border-2 border-neutral-400'>
-                                <th className='table-header'>Population</th>
-                                <td className='table-data'>{population}</td>
-                            </tr>
-                            <tr className='border-2 border-neutral-400'>
-                                <th className='table-header'>Land Area</th>
-                                <td className='table-data'>{area} km²</td>
-                            </tr>
-                            <tr className='border-2 border-neutral-400'>
-                                <th className='table-header'>Independence Status</th>
-                                <td className='table-data'>{independent ? 'Yes' : 'No'}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div className="divide-y divide-gray-300 mx-6 sm:mx-14 mt-10">
+                        <div className="py-4">
+                            <h3 className="text-header">🏛️ Capital</h3>
+                            <ul>
+                                {Object.values(capital || {}).map((cap, index) => (
+                                    <li key={index} className="text-data">{cap}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="py-4">
+                            <h3 className="text-header">🗣️ Languages</h3>
+                            <ul>
+                                {Object.values(languages || {}).map((language, index) => (
+                                    <li key={index} className="text-data">{language}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="py-4">
+                            <h3 className="text-header">💱 Currency</h3>
+                            <ul>
+                                {Object.values(currencies || {}).map((currency, index) => (
+                                    <li key={index} className="text-data">{currency.name} ({currency.symbol})</li>
+                                ))}                        
+                            </ul>
+                        </div>
+                        <div className="py-4">
+                            <h3 className="text-header">👥 Population</h3>
+                            <p className="text-data">{population?.toLocaleString() || 'N/A'}</p>
+                        </div>
+                        <div className="py-4">
+                            <h3 className="text-header">🗺️ Land Area</h3>
+                            <p className="text-data">{area?.toLocaleString()} km²</p>
+                        </div>
+                        <div className="py-4">
+                            <h3 className="text-header">🎌 Independent</h3>
+                            <p className={`text-data font-semibold ${independent ? 'text-green-600' : 'text-red-500'}`}>{independent ? 'Yes' : 'No'}</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <Footer/>

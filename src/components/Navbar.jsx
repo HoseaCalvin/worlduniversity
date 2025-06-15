@@ -1,3 +1,5 @@
+import WorldUniversity from '../assets/worlduniversity-logo.png'
+
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
@@ -11,12 +13,12 @@ function Header() {
     const toggleMenu = () => setIsOpen(!isOpen)
 
     return(
-        <header className='flex justify-between py-2 px-7 bg-sky-800 shadow-2xl border-t-[3px] border-b-[3px] border-black '>
-            <img src='/src/assets/worlduniversity-logo.png' alt="" className='w-auto xl:h-[100px] lg:h-[90px] h-[70px] py-2 ml-5 cursor-pointer'/>
+        <header className='flex justify-between py-2 px-7 bg-sky-800 shadow-2xl border-t-[3px] border-b-[3px] border-black'>
+            <img src={WorldUniversity} alt="WorldUniversity Logo" className='w-auto xl:h-[100px] lg:h-[90px] h-[70px] py-2 ml-5 cursor-pointer'/>
             <ul className='hidden md:flex justify-end items-center'>
                 <Link to='/' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/')}`}>Home</Link>
-                <Link to='/search' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/search')}`}>Country Search</Link>
-                <Link to='/filter' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/filter')}`}>Country Filter</Link>
+                <Link to='/search' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/search')}`}>Search</Link>
+                <Link to='/filter' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/filter')}`}>Filter</Link>
                 <Link to='/about' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/about')}`}>About</Link>
             </ul>
 
@@ -29,8 +31,8 @@ function Header() {
                 } md:hidden z-40 mb-16`}>
                 <ul className='flex flex-col items-center gap-8 text-lg mt-24'>
                     <Link to='/' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/')}`} onClick={toggleMenu}>Home</Link>
-                    <Link to='/search' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/search')}`} onClick={toggleMenu}>Country Search</Link>
-                    <Link to='/filter' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/filter')}`} onClick={toggleMenu}>Country Filter</Link>
+                    <Link to='/search' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/search')}`} onClick={toggleMenu}>Search</Link>
+                    <Link to='/filter' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/filter')}`} onClick={toggleMenu}>Filter</Link>
                     <Link to='/about' className={`px-4 cursor-pointer text-white underline-animation ${isActive('/about')}`} onClick={toggleMenu}>About</Link>
                 </ul>
             </div>

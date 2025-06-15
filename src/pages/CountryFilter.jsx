@@ -1,10 +1,12 @@
-import CountryCard from "../components/CountryCard"
-import CountryCardSkeleton from "../components/CountryCardSkeleton"
-import Footer from "../components/Footer"
+import NoData from '../assets/no-data.png'
+
+import CountryCard from "../components/CountryCard.jsx"
+import CountryCardSkeleton from "../components/CountryCardSkeleton.jsx"
+import Footer from "../components/Footer.jsx"
+
+import { CountryContext } from "../context/CountryContext.jsx"
 
 import { useState, useContext } from 'react'
-
-import { CountryContext } from "../context/CountryContext"
 
 function CountryFilter() {
     const { countries, loading, error } = useContext(CountryContext)
@@ -56,10 +58,10 @@ function CountryFilter() {
     
     return(
         <>
-            <div className="bg-slate-700 p-4">
-                <div className="flex xl:flex-row lg:flex-row md:flex-row sm:flex-col flex-col items-start gap-2">
-                    <div className="p-1">
-                        <select value={region} onChange={handleRegionChange} className="rounded-sm p-1">
+            <div className="bg-slate-700 p-4 shadow-xl">
+                <div className="flex xl:flex-row lg:flex-row md:flex-row sm:flex-col sm:justify-center flex-col items-start gap-2">
+                    <div className="p-1 mx-1">
+                        <select value={region} onChange={handleRegionChange} className="rounded-lg p-1 w-[14rem]">
                             <option value="">All Regions</option>
                             <option value="asia">Asia</option>
                             <option value="europe">Europe</option>
@@ -69,15 +71,15 @@ function CountryFilter() {
                             <option value="antarctic">Antartic</option>
                         </select>
                     </div>
-                    <div className="p-1">
-                        <select value={language} onChange={handleLanguageChange} className="rounded-sm p-1">
+                    <div className="p-1 mx-1">
+                        <select value={language} onChange={handleLanguageChange} className="rounded-lg p-1 w-[14rem]">
                             <option value="">All Languages</option>
                             <option value="english">English-Speaking</option>
                             <option value="nonenglish">Non-English Speaking</option>
                         </select>
                     </div>
-                    <div className="p-1">
-                        <select value={independent} onChange={handleIndependentChange} className="rounded-sm p-1">
+                    <div className="p-1 mx-1">
+                        <select value={independent} onChange={handleIndependentChange} className="rounded-lg p-1 w-[14rem]">
                             <option value="">All Independence Status</option>
                             <option value="independent">Independent</option>
                             <option value="nonindependent">Not Independent</option>
@@ -86,22 +88,24 @@ function CountryFilter() {
                 </div>
             </div>
                 {filteredCountries.length > 0 ? (
-                    <div className="grid lg:grid-cols-3 gap-10 m-6 p-3 sm:grid-cols-2">
-                        {filteredCountries.map((country) => (
-                            <CountryCard
-                                key={country.cca3}
-                                name={country.name.common}
-                                flag={country.flags.svg}
-                                region={country.region}
-                                capital={country.capital}
-                                population={country.population}
-                                description={country.name.common}
-                            />
-                        ))} 
-                     </div> 
+                    <div className="flex justify-center">
+                        <div className="grid lg:grid-cols-3 gap-10 m-6 p-3 sm:grid-cols-2 max-w-[100%]">
+                            {filteredCountries.map((country) => (
+                                <CountryCard
+                                    key={country.cca3}
+                                    name={country.name.common}
+                                    flag={country.flags.svg}
+                                    region={country.region}
+                                    capital={country.capital}
+                                    population={country.population}
+                                    description={country.name.common}
+                                />
+                            ))} 
+                        </div> 
+                    </div>
                     ) : (
                             <div className="flex flex-col justify-center items-center h-screen w-full">
-                                <img src="/src/assets/no-data.png" alt="No Countries" className="h-36 w-auto m-5"/>
+                                <img src={NoData} alt="No Countries" className="h-36 w-auto m-5"/>
                                 <p className="text-3xl font-bold">No Countries Found!</p>
                             </div>
                         )

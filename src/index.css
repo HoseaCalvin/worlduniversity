@@ -23,19 +23,23 @@ body {
         rounded-full cursor-pointer hover:bg-gray-500 hover:text-white transition-all duration-300;
     }
 
-    .table-header {
-        @apply xl:text-2xl lg:text-xl md:text-lg text-lg p-3;
+    .text-header {
+        @apply font-medium text-2xl text-gray-800 p-2.5;
     }
 
-    .table-data {
-        @apply xl:text-2xl lg:text-xl md:text-lg text-lg p-3 text-right;
+    .text-data {
+        @apply text-gray-700 text-lg list-item list-disc mx-12;
+    }
+
+    .about-description-box {
+        @apply p-2 border-2 rounded-2xl shadow-xl hover:shadow-2xl ease-in-out duration-500 border-black w-[50%] max-w-[70%];
     }
 
     .about-description {
-        @apply xl:text-xl lg:text-xl md:text-lg sm:text-lg text-justify mx-5 mt-6 w-[60%];
+        @apply xl:text-lg lg:text-lg md:text-sm sm:text-sm text-justify m-6;
     }
 
     .about-logo-text {
-        @apply xl:text-4xl lg:text-xl md:text-lg text-lg font-bold m-1;
+        @apply xl:text-2xl lg:text-xl md:text-lg text-lg font-bold m-1;
     }
 } 
