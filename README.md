@@ -4,10 +4,11 @@ WorldUniversity is a  website where users search for specific countries, both re
 
 ## 🎯 Objective
 
-There are notable content creators who give street quizzes about geography to strangers. Unfortunately, most of those who get asked struggle to answer them due to lack of global awareness.
-Therefore, I need to an engaging and unique way, to promote geography via an accessible platform.
-Hence, I developed WorldUniversity to encourage students, adventurers, geography enthusiasts, and others alike, to explore various countries and territories around the world.
-Who knows if you could win some money from simply answering one question right?
+With the recent trend of random geography street quiz, I am deeply passionate to promote geography and the splendor of each nation in an accessible and interactive way.
+
+Hence, I developed a website named "WorldUniversity" where students, adventurers, geography enthusiasts, and like-minded individuals can explore and learn about each nation.
+
+WorldUniversity highlights vital aspects of a country like the national flag, the location, and more that definitely spark curiosity and keep learners engaged.
 
 ## 💻 Tech Stack
 
