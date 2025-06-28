@@ -1,7 +1,7 @@
 import NoData from '../assets/no-data.png'
 
 import CountryCard from '../components/CountryCard.jsx'
-import CountryCardSkeleton from '../components/CountryCardSkeleton.jsx'
+import CountryCardLoading from '../components/CountryCardLoading.jsx'
 import Footer from '../components/Footer.jsx'
 
 import { CountryContext } from '../context/CountryContext.jsx'
@@ -24,14 +24,7 @@ function CountrySearch() {
 
     if(loading) {
         return(
-            <div className="grid lg:grid-cols-3 gap-10 m-6 p-3 sm:grid-cols-2 min-w-0 place-items-center w-full">
-                <CountryCardSkeleton/>
-                <CountryCardSkeleton/>
-                <CountryCardSkeleton/>
-                <CountryCardSkeleton/>
-                <CountryCardSkeleton/>
-                <CountryCardSkeleton/>
-            </div>
+            <CountryCardLoading/>
         )
     }
 
@@ -39,14 +32,14 @@ function CountrySearch() {
 
     return(
         <>
-            <div className='bg-slate-700 p-4 shadow-xl'>
-                <div className='flex justify-center items-center'>
-                    <input type="text" value={searchResult} onChange={handleResult} className='xl:w-[50%] lg:w-[45%] md:w-[40%] sm:w-[40%] h-[10%] p-2 rounded-lg' placeholder='Search'/>
+            <div className="bg-slate-700 p-4 shadow-xl">
+                <div className="flex justify-center items-center">
+                    <input type="text" value={searchResult} onChange={handleResult} className='px-2 py-1 rounded-lg text-[0.8rem] w-[50%] max-w-[50rem] sm:text-md md:py-2 md:w-[40%] md:text-md lg:w-[45%] lg:text-lg xl:w-[50%]' placeholder='Search'/>
                 </div>
             </div>
             {filteredCountries.length > 0 ? (
                 <div className="flex justify-center w-full">
-                    <div className="grid lg:grid-cols-3 gap-10 m-6 p-3 sm:grid-cols-2 max-w-[100%] auto-rows-[25rem]">
+                    <div className="country-card-grid">
                         {filteredCountries.map((country) => (
                             <CountryCard
                                 key={country.cca3}
@@ -62,8 +55,8 @@ function CountrySearch() {
                 </div>
                 ) : (
                         <div className="flex flex-col justify-center items-center h-screen w-full">
-                            <img src={NoData} alt="No Countries" className="h-36 w-auto m-5"/>
-                            <p className="text-3xl font-bold">No Countries Found!</p>
+                            <img src={NoData} alt="No Countries" className="h-24 w-auto m-5 md:h-36"/>
+                            <p className="text-xl font-bold md:text-2xl lg:text-3xl">No Countries Found!</p>
                         </div>
                     )
             }

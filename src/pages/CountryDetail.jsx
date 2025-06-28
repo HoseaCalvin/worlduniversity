@@ -1,10 +1,12 @@
-import CountryDetailSkeleton from '../components/CountryDetailSkeleton'
-import Footer from '../components/Footer'
+import NoData from '../assets/no-data.png'
+
+import CountryDetailSkeleton from '../components/CountryDetailSkeleton.jsx'
+import Footer from '../components/Footer.jsx'
 
 import { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { CountryContext } from '../context/CountryContext'
+import { CountryContext } from '../context/CountryContext.jsx'
 
 function CountryDetail() {
     const { name } = useParams();
@@ -52,7 +54,15 @@ function CountryDetail() {
             <CountryDetailSkeleton/>
         )
     }
-    if (!country) return <p className="flex justify-center items-center h-[100vh] text-4xl font-bold">Country not found.</p>;
+    
+    if (!country) {
+        return(
+            <div className="flex flex-col justify-center items-center h-screen w-full">
+                <img src={NoData} alt="No Countries" className="h-24 w-auto m-5 md:h-36"/>
+                <p className="text-xl font-bold md:text-2xl lg:text-3xl">No Country Found!</p>
+            </div>              
+        )
+    }
 
     const { flags, name: countryName, capital, population, area, currencies, languages, independent } = country
 
@@ -60,59 +70,68 @@ function CountryDetail() {
     
     return(
         <>
-            <div className='bg-slate-100'>
-                <div className='p-14'>
-                    <h1 className="text-center xl:text-5xl lg:text-5xl md:text-3xl sm:text-2xl text-2xl font-bold p-1 m-1">{countryName?.official}</h1>
-                    <h2 className='text-center xl:text-xl lg:text-xl md:text-md sm:text-sm p-1 m-1'>({countryName?.common})</h2>
+            <div className="bg-slate-100">
+                <div className="px-4 py-7 lg:p-14">
+                    <div className="mt-3 mb-2">
+                        <h1 className="text-center text-lg font-bold p-1 mt-1 md:text-xl lg:text-xl xl:text-2xl">{countryName?.official}</h1>
+                        <h2 className="text-center text-sm p-1 md:text-lg">({countryName?.common})</h2>
+                    </div>
                     <div className="flex justify-center mx-4">
-                        <img src={flags?.svg} alt="" className='h-[18rem] mx-5 my-10'/>
+                        <img src={flags?.svg} alt={countryName?.common + " flag"} className="w-auto h-auto max-h-[17rem] mt-3 mb-5 p-5 sm:p-4 sm:h-[18rem] md:h-[20rem] lg:p-6"/>
                     </div>
                     <iframe 
                         src={googleMapsEmbedUrl} 
                         loading='lazy'
                         referrerPolicy='no-referrer-when-downgrade'
-                        className="w-full h-[30vh] sm:h-[40vh] lg:h-[60vh] mt-3 mb-10 rounded-lg"
+                        className="w-full h-[30vh] sm:h-[40vh] lg:h-[60vh] mt-3 mb-10 rounded-2xl"
                     ></iframe>
-                    <div className="divide-y divide-gray-300 mx-6 sm:mx-14 mt-10">
-                        <div className="py-4">
-                            <h3 className="text-header">🏛️ Capital</h3>
-                            <ul>
+                    <div className="border-2 px-3 py-2 divide-y divide-gray-300 rounded-xl border-black">
+                            <div className="flex justify-between">
+                                <h3 className="text-header">Population</h3>
+                                <p className="text-data">{population?.toLocaleString() || 'N/A'}</p>
+                            </div>
+                            <div className="flex justify-between">
+                                <h3 className="text-header">Land Area</h3>
+                                <p className="text-data">{area?.toLocaleString()} km²</p>
+                            </div>
+                            <div className="flex justify-between">
+                                <h3 className="text-header">Independent</h3>
+                                <p className={`text-data font-semibold ${independent ? 'text-green-600' : 'text-red-500'}`}>{independent ? 'Yes' : 'No'}</p>
+                            </div>
+                    </div>
+                    <div className="grid auto-cols-auto auto-rows-auto mt-3 gap-3">
+                        <div className="border-2 px-3 py-2 rounded-xl border-black sm:col-start-1">
+                            <div className="flex justify-center">
+                                <h2 className="text-header">Capital</h2>
+                            </div>
+                            <ul className="p-3">
                                 {Object.values(capital || {}).map((cap, index) => (
-                                    <li key={index} className="text-data">{cap}</li>
+                                    <li key={index} className="text-list-data">{cap}</li>
                                 ))}
                             </ul>
                         </div>
-                        <div className="py-4">
-                            <h3 className="text-header">🗣️ Languages</h3>
-                            <ul>
-                                {Object.values(languages || {}).map((language, index) => (
-                                    <li key={index} className="text-data">{language}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="py-4">
-                            <h3 className="text-header">💱 Currency</h3>
-                            <ul>
+                        <div className="border-2 px-3 py-2 rounded-xl border-black sm:col-start-2">
+                            <div className="flex justify-center">
+                                <h2 className="text-header">Currency</h2>
+                            </div>
+                            <ul className="p-3">
                                 {Object.values(currencies || {}).map((currency, index) => (
-                                    <li key={index} className="text-data">{currency.name} ({currency.symbol})</li>
+                                    <li key={index} className="text-list-data">{currency.name} ({currency.symbol})</li>
                                 ))}                        
                             </ul>
                         </div>
-                        <div className="py-4">
-                            <h3 className="text-header">👥 Population</h3>
-                            <p className="text-data">{population?.toLocaleString() || 'N/A'}</p>
-                        </div>
-                        <div className="py-4">
-                            <h3 className="text-header">🗺️ Land Area</h3>
-                            <p className="text-data">{area?.toLocaleString()} km²</p>
-                        </div>
-                        <div className="py-4">
-                            <h3 className="text-header">🎌 Independent</h3>
-                            <p className={`text-data font-semibold ${independent ? 'text-green-600' : 'text-red-500'}`}>{independent ? 'Yes' : 'No'}</p>
+                        <div className="border-2 px-3 py-2 rounded-xl border-black sm:col-start-3">
+                            <div className="flex justify-center">
+                                <h2 className="text-header">Language</h2>
+                            </div>
+                            <ul className="p-3">
+                                {Object.values(languages || {}).map((language, index) => (
+                                    <li key={index} className="text-list-data">{language}</li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
-
-                </div>
+               </div>
             </div>
             <Footer/>
         </>

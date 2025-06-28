@@ -62,16 +62,20 @@ function ImageSlider() {
     }
 
     return(
-        <div className='flex justify-center relative'>
-            <div className='left-4 slideshow-button' onClick={slideNext}>&#8592;</div>
-            <div className='min-w-full min-h-[100vh] bg-cover bg-center bg-no-repeat' style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url(${slideImages[currentIndex].url})`}}>
-                <div className='absolute bottom-12 mx-6'>
-                        <h1 className='xl:text-5xl lg:text-4xl md:text-4xl sm:text-4xl text-3xl text-white font-bold p-2 pb-2'>{slideImages[currentIndex].title}</h1>
-                        <h2 className='xl:text-2xl lg:text-xl md:text-lg sm:text-sm text-white font-bold p-2 pt-1 pb-3'>{slideImages[currentIndex].country}</h2>
-                        <p className='xL:text-2xl lg:text-xl md:text-md sm:text-sm text-sm text-white p-2'>{slideImages[currentIndex].description}</p>
-                </div>   
+        <div className="relative overflow-hidden w-full h-screen">
+            <div className="flex transition-transform duration-700 ease-in-out" style={{transform: `translateX(-${currentIndex * 100}%)`}}>
+                {slideImages.map((slide, index) => (
+                    <div key={index} className="min-w-full min-h-[100vh] bg-cover bg-center bg-no-repeat relative" style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url(${slide.url})`}}>
+                        <div className="absolute bottom-12 mx-6">
+                            <h1 className="text-xl text-white font-bold p-1 md:text-4xl md:p-2 lg:text-2xl xl:text-4xl">{slide.title}</h1>
+                            <h2 className="text-sm text-white p-1 font-bold md:p-2 lg:text-xl xl:text-2xl">{slide.country}</h2>
+                            <p className="text-sm text-white p-1 md:p-2 lg:text-xl xl:text-2xl">{slide.description}</p>
+                        </div> 
+                    </div>
+                ))}  
             </div>
-            <div className='right-4 slideshow-button' onClick={slidePrevious}>&#8594;</div>
+            <div className='left-4 slideshow-button' onClick={slidePrevious}>&#8592;</div>
+            <div className='right-4 slideshow-button' onClick={slideNext}>&#8594;</div>            
         </div>
     )
 }
