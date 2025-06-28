@@ -4,7 +4,7 @@ WorldUniversity is a  website where users search for specific countries, both re
 
 ## 🎯 Objective
 
-With the recent trend of random geography street quiz, I am deeply passionate to promote geography and the splendor of each nation in an accessible and interactive way.
+With the recent trend of random geography street quiz, I am deeply passionate about promoting geography and the splendor of each nation in an accessible and interactive way.
 
 Hence, I developed a website named "WorldUniversity" where students, adventurers, geography enthusiasts, and like-minded individuals can explore and learn about each nation.
 
