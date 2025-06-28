@@ -1,3 +1,5 @@
+import CountryCardSkeleton from '../components/CountryCardSkeleton.jsx';
+
 function CountryCardLoading() {
     return(
         <div className="flex justify-center w-full">
