@@ -17,22 +17,22 @@ function Home() {
                 <div className="grid w-full lg:grid-cols-2 gap-x-10 gap-y-10 px-4">
                     <div className="flex sm:justify-center lg:justify-end">
                         <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Search} alt="Search" title="Faster Searching" description="Type the country and watch the result pops up instantly!" />
+                            <Feature logo={Search} alt="Search" title="Faster Searching" description="Type the country name and watch the result pop up instantly!" />
                         </div>
                     </div>
                     <div className="flex sm:justify-center lg:justify-start">
                         <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Paper} alt="Paper" title="Get Detailed Facts" description="Explore some countries and find their mind-blowing facts no one knows!" />
+                            <Feature logo={Paper} alt="Paper" title="Get Detailed Facts" description="Learn in-depth facts about each stunning country!" />
                         </div>
                     </div>
                     <div className="flex sm:justify-center lg:justify-end">
                         <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Filter} alt="Filter" title="Ease of Filtering" description="Too many countries to explore? Don't worry! Filtering is here to save you!" />
+                            <Feature logo={Filter} alt="Filter" title="Ease of Filtering" description="Narrow down your search by applying filters!" />
                         </div>
                     </div>
                     <div className="flex sm:justify-center lg:justify-start">
                         <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Globe} alt="Globe" title="Geography Made Engaging" description="Did you know your geography knowledge improves as you use WorldUniversity?" />
+                            <Feature logo={Globe} alt="Globe" title="Geography Made Engaging" description="Learn geography in a new, revolutionized way!" />
                         </div>
                     </div> 
                 </div>
