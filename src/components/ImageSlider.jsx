@@ -62,14 +62,14 @@ function ImageSlider() {
     }
 
     return(
-        <div className="relative overflow-hidden w-full h-screen">
+        <div className="relative overflow-hidden h-screen mt-4 mb-10 mx-0 border-black lg:border-[3px] lg:rounded-xl lg:mx-8 lg:mb-20">
             <div className="flex transition-transform duration-700 ease-in-out" style={{transform: `translateX(-${currentIndex * 100}%)`}}>
                 {slideImages.map((slide, index) => (
                     <div key={index} className="min-w-full min-h-[100vh] bg-cover bg-center bg-no-repeat relative" style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)), url(${slide.url})`}}>
                         <div className="absolute bottom-12 mx-6">
-                            <h1 className="text-xl text-white font-bold p-1 md:text-4xl md:p-2 lg:text-2xl xl:text-4xl">{slide.title}</h1>
-                            <h2 className="text-sm text-white p-1 font-bold md:p-2 lg:text-xl xl:text-2xl">{slide.country}</h2>
-                            <p className="text-sm text-white p-1 md:p-2 lg:text-xl xl:text-2xl">{slide.description}</p>
+                            <h1 className="text-xl text-white font-bold p-1 lg:p-2 lg:text-2xl xl:text-4xl">{slide.title}</h1>
+                            <h2 className="text-sm text-white p-1 font-bold lg:p-2 lg:text-xl xl:text-2xl">{slide.country}</h2>
+                            <p className="text-sm text-white p-1 lg:p-2 lg:text-xl xl:text-2xl">{slide.description}</p>
                         </div> 
                     </div>
                 ))}  

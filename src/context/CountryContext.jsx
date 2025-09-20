@@ -1,9 +1,9 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 export const CountryContext = createContext();
 
-function CountryProvider ({ children }) {
+function CountryProvider({ children }) {
     const [countries, setCountries] = useState([]);
     const [latestCountry, setLatestCountry] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -32,5 +32,9 @@ function CountryProvider ({ children }) {
         </CountryContext.Provider>
     );
 };
+
+export function useCountries() {
+    return useContext(CountryContext);
+}
 
 export default CountryProvider

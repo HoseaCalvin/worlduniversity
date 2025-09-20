@@ -1,42 +1,76 @@
-import ImageSlider from '../components/ImageSlider.jsx'
-import Feature from '../components/Feature.jsx'
-import Footer from '../components/Footer.jsx'
+import MapExploration from "../assets/home/map-exploration.jpg";
+import Globe from "../assets/globe.png";
+import { ArrowRight } from "lucide-react";
 
-import Search from '../assets/features/search.png'
-import Paper from '../assets/features/paper.png'
-import Filter from '../assets/features/filter.png'
-import Globe from '../assets/features/globe.png'
+import { Link } from "react-router-dom";
+
+import { useCountries } from '../context/CountryContext.jsx';
+
+import CountryCard from "../components/CountryCard.jsx";
+import { CountryCardSkeleton } from "../components/CountryCard.jsx";
+import ImageSlider from '../components/ImageSlider.jsx';
+import Footer from '../components/Footer.jsx';
 
 function Home() {
+    const { countries, loading } = useCountries();
+
+    const topCountries = ['Iceland', 'United Kingdom', 'Indonesia', 'Netherlands', 'Italy', 'United States'];
+
     return(
         <>
-            <ImageSlider></ImageSlider>
-            <div className="m-5 p-3 lg:m-8 lg:p-5">
-                <hr className="border-4"/>
-                <h1 className="font-bold text-xl text-center mt-3 mb-8 mx-5 p-3 lg:text-2xl xl:text-4xl">Features</h1>
-                <div className="grid w-full lg:grid-cols-2 gap-x-10 gap-y-10 px-4">
-                    <div className="flex sm:justify-center lg:justify-end">
-                        <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Search} alt="Search" title="Faster Searching" description="Type the country name and watch the result pop up instantly!" />
-                        </div>
+            <div className="relative flex justify-center items-center h-screen bg-cover bg-center" style={{ backgroundImage: `url(${MapExploration})`}}>
+                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="z-10 *:text-white *:text-center w-full p-5">
+                    <h1 className="font-bold text-2xl py-3 sm:text-3xl md:text-4xl lg:py-5 lg:text-6xl">Explore the corners of the world!</h1>
+                    <p className="text-xs p-1 text-justify md:text-sm lg:text-lg">Get to know what every nation across the world has to offer, from its gracious landmarks to its adored cuisine, by simply clicking country cards!</p>
+                    <div className="p-6">
+                        <Link to='/search' className="inline-flex items-center mx-auto gap-x-3 px-4 py-2 rounded-full w-fit text-black border-2 border-black bg-white text-xs hover:border-white hover:bg-gray-600 hover:text-white md:text-base lg:text-lg">
+                            Explore 
+                            <ArrowRight className="w-5 my-auto md:w-8"/>
+                        </Link>
                     </div>
-                    <div className="flex sm:justify-center lg:justify-start">
-                        <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Paper} alt="Paper" title="Get Detailed Facts" description="Learn in-depth facts about each stunning country!" />
-                        </div>
-                    </div>
-                    <div className="flex sm:justify-center lg:justify-end">
-                        <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Filter} alt="Filter" title="Ease of Filtering" description="Narrow down your search by applying filters!" />
-                        </div>
-                    </div>
-                    <div className="flex sm:justify-center lg:justify-start">
-                        <div className="w-full max-w-[40rem] sm:w-[20rem] md:w-[30rem]">
-                            <Feature logo={Globe} alt="Globe" title="Geography Made Engaging" description="Learn geography in a new, revolutionized way!" />
-                        </div>
-                    </div> 
                 </div>
             </div>
+            <div className="w-full p-1 mt-[3.5rem] md:mt-[6rem]">
+                <h1 className="text-center font-bold text-lg md:text-xl lg:text-3xl">Highlighted Countries</h1>
+            </div>
+            <ImageSlider/>
+
+            { loading ? (
+                <div className="flex justify-center items-center h-full mb-14">
+                    <div className="grid grid-rows-2 grid-cols-2 place-items-center gap-x-5 gap-y-10 w-fit px-4 md:grid-cols-3">
+                        <CountryCardSkeleton/>
+                        <CountryCardSkeleton/>
+                        <CountryCardSkeleton/>
+                        <CountryCardSkeleton/>
+                        <CountryCardSkeleton/>
+                        <CountryCardSkeleton/>
+                    </div>
+                </div>
+                ) : countries.length > 0 ? (
+                    <div className="flex justify-center items-center h-full mb-14">
+                        <div className="grid grid-rows-2 grid-cols-2 place-items-center gap-x-5 gap-y-10 w-fit px-4 md:grid-cols-3">
+                            { countries.map((country, index) =>
+                                topCountries.includes(country.name.common) && (
+                                    <CountryCard
+                                        key={country.cca3}
+                                        name={country.name.common}
+                                        flag={country.flags.svg}
+                                        region={country.region}
+                                        capital={country.capital}
+                                        population={country.population}
+                                    />
+                                )
+                            )}
+                        </div>
+                    </div>
+                ) : (
+                    <div className="flex flex-col justify-center items-center h-screen w-full">
+                        <img src={Globe} alt="No Countries" className="h-24 w-auto m-5 md:h-36"/>
+                        <p className="text-xl font-bold md:text-2xl lg:text-3xl">No Countries Found!</p>
+                    </div>
+                )
+            }
             <Footer/>
         </>
     )
